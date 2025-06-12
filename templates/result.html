@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detection Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <a href="/" class="top-left">⬅️ Back</a>
+    <h1>Result</h1>
+    <div class="table-container">
+        <div style="text-align: right; margin-bottom: 10px;">
+            <a href="/download" class="download-btn">⬇️ Download CSV</a>
+        </div>
+        <div class="table-wrapper">
+            <table class="table">
+                {{ table|safe }}
+            </table>
+        </div>
+    </div>
+</body>
+</html>

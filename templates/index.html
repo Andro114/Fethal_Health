@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fetal Health Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+
+    <!-- MAIN PAGE TITLE -->
+    <header>
+        <h1 style="text-align: center; margin-top: 30px; font-size: 36px; color: #2c3e50;">
+            Fetal Health Detection System
+        </h1>
+        <p style="text-align: center; font-size: 18px; color: #7f8c8d;">
+            Using Cardiotocogram (CTG) Data for Predictive Analysis
+        </p>
+    </header>
+
+    <section class="context-section">
+        <h2>Cardiotocograms and Their Role in Reducing Child & Maternal Mortality</h2>
+        <p>
+            Reducing child mortality remains a key objective in the United Nations Sustainable Development Goals, 
+            representing major progress in global human development. By 2030, the UN envisions that all nations 
+            will end preventable deaths among newborns and children under the age of five, with a goal of 
+            <strong>no more than 25 deaths per 1,000 live births</strong>.
+        </p>
+        <p>
+            Closely tied to this concern is the issue of maternal mortality, which accounted for approximately 
+            <strong>295,000 deaths globally in 2017</strong>. A staggering 94% of these occurred in low-resource settings, 
+            and the vast majority were preventable with access to better healthcare and timely intervention.
+        </p>
+        <p>
+            One promising and cost-effective method to help address both child and maternal mortality is the use of 
+            <strong>Cardiotocograms (CTGs)</strong>. These devices monitor fetal well-being by sending ultrasound pulses 
+            and interpreting the feedback, providing insight into vital indicators such as fetal heart rate, 
+            fetal movements, and uterine contractions. Their affordability and simplicity make CTGs a valuable tool 
+            in both advanced and resource-limited clinical environments.
+        </p>
+        <p> 
+            These records were reviewed and classified by three experienced obstetricians into three categories: 
+            <strong>Normal</strong>, <strong>Suspect</strong>, and <strong>Pathological</strong>, allowing for further 
+            analysis and potential automation of fetal health assessment.
+        </p>
+    </section>
+
+    <h2>Features Used for Fetal Health Detection</h2>
+    <div class="feature-grid">
+        <div class="feature-card">Prolongued Decelerations</div>
+        <div class="feature-card">Abnormal Short-Term Variability</div>
+        <div class="feature-card">Abnormal Long-Term Variability (%)</div>
+        <div class="feature-card">Accelerations</div>
+        <div class="feature-card">Histogram Mode</div>
+        <div class="feature-card">Histogram Mean</div>
+        <div class="feature-card">Long-Term Variability (Mean)</div>
+        <div class="feature-card">Histogram Variance</div>
+        <div class="feature-card">Histogram Median</div>
+        <div class="feature-card">Uterine Contractions</div>
+        <div class="feature-card">Baseline Value</div>
+        <div class="feature-card">Histogram Tendency</div>
+        <div class="feature-card">Severe Decelerations</div>
+    </div>
+
+    <h2>Upload CSV for Detection</h2>
+    <form action="/predict" method="post" enctype="multipart/form-data">
+        <label for="file-upload" class="custom-file-upload">
+            Choose CSV file
+        </label>
+        <input id="file-upload" type="file" name="file" accept=".csv" required>
+        <span id="file-name">No file chosen</span>
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    <script>
+        alert("Error: {{ error }}");
+    </script>
+    {% endif %}
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
+
